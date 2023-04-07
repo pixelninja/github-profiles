@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "fontfaceobserver": "^2.3.0",
-    "gsap": "file:src/vendor/gsap-3.11.4.tgz",
+    "gsap": "^3.11.5",
     "imagesloaded": "^5.0.0"
   }
 }
