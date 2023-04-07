@@ -3,7 +3,6 @@ import gsap from 'gsap'
 
 export class GHUserSearch {
 	public root: any;
-	public apiUrl: string | undefined;
 	public searchString: string | undefined;
 	public userData: any;
 	public messageWrapper: any;
@@ -16,10 +15,10 @@ export class GHUserSearch {
 	public button: any;
 
 	constructor(element: any) {
+		// Make sure there is a parent element
 		if (!element) return
 
 		this.root = element;
-		this.apiUrl = "https://api.github.com/users/";
 		this.searchString = '';
 		this.userData = false;
 
@@ -40,19 +39,23 @@ export class GHUserSearch {
 	public init() {
 		const storedData = localStorage.getItem('ghdata') ?? null;
 
+		// Show user if one has been searched and stored previously
 		if (storedData) {
 			this.userData = JSON.parse(storedData);
 			this.populateCard();
 			this.showCard();
 		}
 
+		// On Enter, trigger a click
 		this.input.addEventListener("keyup", (e: { code: string; }) => {
 			if (e.code === 'Enter') {
 				this.button.click();
 			}
 		});
 
+		// On click of the button, do the magic
 		this.button.addEventListener('click', async () => {
+			// Loading already? Do nothing
 			if (this.button.classList.contains('-loading')) return;
 
 			this.searchString = this.input.value;
@@ -76,13 +79,14 @@ export class GHUserSearch {
 				return;
 			}
 
+			// Add loading class
 			this.button.classList.add('-loading');
 
 			// Reset data
 			this.userData = false;
 
-			// Perform the fetch using our custom function
-			await fetchGet(this.apiUrl + this.searchString)
+			// Perform the fetch
+			await fetchGet(`https://api.github.com/users/${this.searchString}`)
 				.then(async (data: { message: string; name: null; login: any; followers: any; public_repos: any; avatar_url: any; }) => {
 					// No user? output a message and kill it
 					if (data.message === 'Not Found') {
@@ -108,11 +112,13 @@ export class GHUserSearch {
 
 			// Populate and show the card if there is data
 			if (this.userData) {
+				// Fetch the users repos
 				await fetchGet(`https://api.github.com/users/${this.searchString}/repos?sort=updated&direction=desc&per_page=4&page=1`)
 					.then(async (data) => {
+						// Add repo data to userData object
 						this.userData._repos = data;
 						this.button.classList.remove('-loading');
-
+						// Store the data
 						this.setStorage();
 					})
 					.catch(async (error: string) => {
@@ -124,7 +130,7 @@ export class GHUserSearch {
 						await this.displayMessage();
 					});
 
-				// Wait until we've successfully retrieved the data
+				// Wait until we've successfully retrieved the data to show the content
 				await this.hideCard();
 				await this.populateCard();
 				await this.showCard();
