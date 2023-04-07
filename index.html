@@ -5,12 +5,77 @@
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Voyage</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<!-- <div id="app"></div> -->
+		<div id="page-wrapper">
+			<button class="nightmode">
+				<svg class="nightmode__icon" viewBox="0 0 382.12 478.64">
+					<path d="m332.14,46.46h-107.88v82.7h94v40h-94v51h94v40h-94v51h53.66v40h-53.66v73.06h107.86c13.26,0,25.98-5.27,35.35-14.64,9.38-9.38,14.65-22.09,14.65-35.36V96.5c.01-13.27-5.25-25.99-14.62-35.38-9.38-9.38-22.09-14.66-35.36-14.66h0Zm-169.96,0H50c-13.26,0-25.98,5.27-35.35,14.65C5.27,70.48,0,83.2,0,96.46v277.74c0,13.26,5.27,25.98,14.65,35.36,9.38,9.38,22.09,14.64,35.35,14.64h112.18v54.44h40V0h-40v46.46ZM50,384.24c-5.52,0-10-4.48-10-10V96.5c0-5.52,4.48-10,10-10h112.18v42.66h-81.36v40h81.34v51h-81.34v40h81.34v51h-82.88v40h82.9v33.06l-112.18.02Z"/>
+				</svg>
+			</button>
 
-		<div class="field">
-			<input class="field__input" type="text" placeholder="Github user search" />
+			<div id="page-content" class="ghuser">
+				<header>
+					<h1>Github User Search</h1>
+					<h2>The best damn user search out there.</h2>
+				</header>
+
+				<article class="copy">
+					<p>If you find yourself thinking 🧐 "<i><u>sheesh, I wish I could easily search for a Github user. Kind of like the search on Github, but y'know... not on Github</u></i>" then you've come to the right place 🎉.</p>
+					<p>Use the input below to have your mind blown 🤯.</p>
+				</article>
+
+				<article class="fields ghuser__lookup">
+					<div class="field">
+						<label for="field-username" class="visually-hidden">Type a username to lookup</label>
+						<input id="field-username" class="field__input" name="username" type="text" placeholder="Type a username to lookup" aria-labelledby="field-button" />
+						<button id="field-button" class="field__button">
+							<span>Search</span>
+						</button>
+					</div>
+
+					<div class="field__messages">
+						<!-- <p class="field__messages--error">This is an error message.</p> -->
+						<!-- <p class="field__messages--success">This is a success message.</p> -->
+						<!-- <p class="field__messages--info">This is some info text.</p> -->
+					</div>
+				</article>
+
+				<article class="ghuser__card -inactive">
+					<!-- <figure class="ghuser__avatar">
+						<img src="" alt="" />
+					</figure>
+
+					<div class="ghuser__meta">
+						<p class="ghuser__meta--name">Name</p>
+						<p class="ghuser__meta--username">Username</p>
+						<p class="ghuser__meta--count"><i>followers</i></p>
+						<p class="ghuser__meta--count"><i>public repos</i></p>
+					</div>
+
+					<div class="ghuser__repos">
+						<p>Latest repositories:</p>
+
+						<ol>
+							<li>
+								<a href="">Repo 1</a>
+							</li>
+							<li>
+								<a href="">Repo 2</a>
+							</li>
+							<li>
+								<a href="">Repo 3</a>
+							</li>
+							<li>
+								<a href="">Repo 4</a>
+							</li>
+						</ol>
+					</div> -->
+				</article>
+			</div>
 		</div>
 
 		<script type="module" src="src/main.ts"></script>

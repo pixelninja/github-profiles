@@ -1,0 +1,50 @@
+// CSS Vars
+// ----------------------------------------
+
+:root {
+	--anim-short: 240ms;
+	--anim-medium: 500ms;
+	--anim-long: 1000ms;
+	--anim-ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+	--anim-ease-in-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+	--vh: 100vh;
+	--vh-initial: 100vh;
+
+	--base-sansserif: "Lato", sans-serif;
+	--base-serif: "Abril Fatface", serif;
+	--base-weight-reg: 400;
+	--base-weight-bold: 700;
+	--base-font-family: var(--base-sansserif);
+	--base-font-weight: var(--base-weight-reg);
+	--base-font-size: 1.6em;
+
+	--colour-black: #000;
+	--colour-white: #fff;
+	--colour-cod-gray: #121212;
+	--colour-mine-shaft: #292929;
+	--colour-silver: #bbb;
+	--colour-gallery: #ededed;
+	--colour-mercury: #e1e1e1;
+	--colour-red-orange: #ff4136;
+	--colour-apple: #2ecc40;
+	--colour-science-blue: #0074d9;
+
+	--wrapper-padding: 50px;
+
+	--theme-text-colour: var(--colour-black);
+	--theme-page-bg: var(--colour-gallery);
+	--theme-copy-bg: var(--colour-white);
+	--theme-copy-border: var(--colour-silver);
+
+	@include mobile() {
+		--wrapper-padding: 25px;
+	}
+}
+
+body.-dark {
+	--theme-text-colour: var(--colour-mercury);
+	--theme-page-bg: var(--colour-cod-gray);
+	--theme-copy-bg: var(--colour-mine-shaft);
+	--theme-copy-border: var(--colour-black);
+}

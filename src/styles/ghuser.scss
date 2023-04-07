@@ -1,0 +1,94 @@
+.ghuser {
+
+	&__card {
+		display: flex;
+		flex-wrap: wrap;
+
+		@media (prefers-reduced-motion: no-preference) {
+			opacity: 1;
+			transform: translateY(0);
+
+			transition: all var(--anim-medium) var(--anim-ease-out);
+
+			&.-inactive {
+				opacity: 0;
+				transform: translateY(25px);
+			}
+		}
+	}
+
+	&__avatar {
+		width: 100px;
+		height: 100px;
+		margin-right: 24px;
+		padding: 5px;
+		border: 1px solid var(--theme-copy-border);
+		border-radius: 3px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__meta,
+	&__repos {
+		width: calc(50% - 62px);
+	}
+
+	&__meta {
+
+		@include mobile() {
+			width: calc(100% - 124px);
+		}
+
+		&--name {
+			font-weight: var(--base-weight-bold);
+		}
+
+		&--count {
+
+			i {
+				font-size: 0.9em;
+			}
+		}
+
+		&--username {
+			margin-top: -5px;
+			font-style: italic;
+			text-transform: lowercase;
+
+			&:before {
+				display: inline-block;
+				content: '@';
+			}
+		}
+	}
+
+	&__repos {
+
+		@include mobile() {
+			width: 100%;
+			margin-top: var(--wrapper-padding);
+		}
+
+		ol {
+			padding-left: 15px;
+		}
+
+		li {
+			font-size: 1.4em;
+		}
+
+		a {
+			padding-left: 0;
+			text-decoration: underline;
+
+			&:hover {
+				padding-left: 5px;
+			}
+		}
+	}
+}
